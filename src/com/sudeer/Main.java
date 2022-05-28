@@ -67,26 +67,25 @@ public class Main {
             float economy = bowlerRuns.get(bowler) / overs;
             bowlerEconomies.put(bowler, economy);
         }
-
         HashMap<String, Float> sortedBowlerEconomies = sortByValue(bowlerEconomies);
         Map.Entry<String, Float> entry = sortedBowlerEconomies.entrySet().iterator().next();
         String key = entry.getKey();
         Float value = entry.getValue();
         System.out.println("For the year 2015 the top economical bowler ---- Name : " + key + "  -- Economy : " + value);
     }
-    private static HashMap<String, Float> sortByValue(HashMap<String, Float> hm) {
-        List<Map.Entry<String, Float>> list = new LinkedList<Map.Entry<String, Float>>(hm.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Float>>() {
-            public int compare(Map.Entry<String, Float> o1,
-                               Map.Entry<String, Float> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
+    private static HashMap<String, Float> sortByValue(HashMap<String, Float> sortedBowlers) {
+        List<Map.Entry<String, Float>> sortedList = new LinkedList<Map.Entry<String, Float>>(sortedBowlers.entrySet());
+        Collections.sort(sortedList, new Comparator<Map.Entry<String, Float>>() {
+            public int compare(Map.Entry<String, Float> object1,
+                               Map.Entry<String, Float> object2) {
+                return (object1.getValue()).compareTo(object2.getValue());
             }
         });
-        HashMap<String, Float> temp = new LinkedHashMap<String, Float>();
-        for (Map.Entry<String, Float> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
+        HashMap<String, Float> sortedEconomy = new LinkedHashMap<String, Float>();
+        for (Map.Entry<String, Float>  listObject: sortedList) {
+            sortedEconomy.put(listObject.getKey(), listObject.getValue());
         }
-        return temp;
+        return sortedEconomy;
     }
     private static void findNumberOfTossesWonByEachTeam(List<Match> matches) {
         HashMap<String, Integer> numberOfTossesWonPerTeam = new HashMap<>();
@@ -95,7 +94,6 @@ public class Main {
             if (numberOfTossesWonPerTeam.containsKey(team)) {
                 int count = (int) numberOfTossesWonPerTeam.get(team);
                 numberOfTossesWonPerTeam.put(team, count += 1);
-
             } else {
                 numberOfTossesWonPerTeam.put(team, 1);
             }
@@ -117,12 +115,10 @@ public class Main {
 
             String deliviriesId = deliveries.get(j).getMatchId();
             if (matchIds.contains(deliviriesId)) {
-
                 String team = deliveries.get(j).getBowlingTeam();
                 if (extraRunsConcededPerTeam.containsKey(team)) {
                     int count = extraRunsConcededPerTeam.get(team);
                     extraRunsConcededPerTeam.put(team, count + Integer.valueOf(deliveries.get(j).getExtraRuns()));
-
                 } else {
                     extraRunsConcededPerTeam.put(team, Integer.valueOf(deliveries.get(j).getExtraRuns()));
                 }
@@ -153,7 +149,6 @@ public class Main {
             if (totalMatchesPlayedPerYear.containsKey(year)) {
                 int count = (int) totalMatchesPlayedPerYear.get(year);
                 totalMatchesPlayedPerYear.put(year, count += 1);
-
             } else {
                 totalMatchesPlayedPerYear.put(year, 1);
             }
