@@ -158,7 +158,7 @@ public class Main {
     }
     private static List<Delivery> getDeliveriesData() {
         List<Delivery> deliveries = new ArrayList<>();
-        String path = "/home/sudheer/Downloads/archive/deliveries.csv";
+        String path = "src/com/files/deliveries.csv";
         String line = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
@@ -191,7 +191,7 @@ public class Main {
     }
     private static List<Match> getMatchesData() {
         List<Match> matches = new ArrayList<>();
-        String path = "/home/sudheer/Downloads/archive/matches.csv";
+        String path = "src/com/files/matches.csv";
         String line = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
